@@ -1,0 +1,28 @@
+{% extends 'index.html' %} 
+{% block title %} About {% endblock title %}
+{% block content %}
+{% load static %}
+<div class="container about"  id="my-scrollbar" data-scrollbar style="overflow: auto; ">
+	<center><h2 class="h2bio" style="margin-top: 15px;">Biodata Penulis</h2></center> 
+    <div class="row align-items-center" style="margin-top: 15px;">
+        <div class="col-md-6 profil_pict">         
+        	<img src="{% static 'profil.JPG' %}"  width="40%">
+            <p>Afifah Purwati Ningrum <br>
+              10117232 <br>
+              Sistem Informasi 2017 <br>
+              Universitas Gunadarma <br>
+              afifahpningrum@gmail.com</p>           
+        </div>
+        <div class="col-md-6 profil_content">
+            <p>Website ini berfungsi untuk menganalisa respon masyarakat mengenai topik film Seaspiracy 
+                dengan menggunakan media sosial twitter. Tweets akan dianalisa ke dalam sentimen positif, negatif, atau netral
+                dimana hasil dari klasifikasi tersebut akan ditampilkan kdalam bentuk tabel, wordcloud, dan pie chart.
+                Website ini adalah teks mining yang dibangun dengan bahasa python pada framework django dan menggunakan 
+                library textblob. </p>
+        </div>
+    </div>
+</div>
+<footer style="background-color: #78a9af; position: fixed;left: 0;bottom: 0;width: 100%;text-align: center;">
+    <div id="copyrght" class="footer-copyright text-center py-3">©2021 Sentimen Analisis Seaspiracy</div>
+</footer>
+{% endblock content %}

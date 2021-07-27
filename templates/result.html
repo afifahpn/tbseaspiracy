@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+{% block title %} Result {% endblock title %}
+{% block content %}
+<div class="container-fluid">
+  <div class="card">
+      <div class="card-header">
+        <ul class="nav nav-pills card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="#tabel" role="tab" data-toggle="tab">Hasil dalam Tabel</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#wordcloud" role="tab" data-toggle="tab">Word Cloud</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#piechart" role="tab" data-toggle="tab">Pie Chart</a>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="tabel">
+          <div class="tabel" id="my-scrollbar" data-scrollbar style="overflow: auto; ">
+            <p>
+              <h3>Hasil Sentimen</h3>
+              positif :{{positif}} <br>
+              netral :{{netral}} <br>
+              negatif :{{negatif}} <br>
+              jumlah : {{jumlah}} <br>
+
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th style = "width:10%" scope='col'>No</th>
+                          <th style = "width:90%" scope='col'>Tweets Kotor</th>
+                          <th style = "width:90%" scope='col'>Polarity</th>
+                          <th style = "width:90%" scope='col'>Subjectivity</th>
+                          <th style = "width:90%" scope='col'>Sentimen</th>
+                      </tr>
+                  </thead>
+                  {% for i in hasil %}
+                  <tbody>
+                      <tr>
+                          <th style = "width:10%" scope='row'>{{ forloop.counter }}</th>
+                          <td style = "width:90%">{{i.isi_tweet}}</td>
+                          <td style = "width:90%">{{i.polarity}}</td>
+                          <td style = "width:90%">{{i.subjectivity}}</td>
+                          <td style = "width:90%">{{i.sentimen}}</td>
+                      </tr>
+                  </tbody>
+                  {% endfor %}
+              </table>
+            </p>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="wordcloud">
+          <img src="{{image}}" class="wordcloud">
+        </div>
+        <div role="tabpanel" class="tab-pane" id="piechart">
+          <img src="{{pie}}" class="piechart">
+        </div>
+      </div>
+  </div>
+</div>
+<footer style="background-color: #78a9af; position: fixed;left: 0;bottom: 0;width: 100%;text-align: center;">
+  <div id="copyrght" class="footer-copyright text-center py-3">©2021 Sentimen Analisis Seaspiracy</div>
+</footer>
+{% endblock content %}
